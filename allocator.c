@@ -6,6 +6,15 @@
 static unsigned char memory_pool[MEMORY_POOL_SIZE];
 static size_t pool_offset = 0; // where the next malloc will come from
 
+// defining a block header to store block metadata
+// type of a linked list
+typedef struct block_header {
+    size_t size;
+    int free;
+    struct block_header* next;
+}
+
+
 /**
  * @brief Hands out memory sequentially from a fixed buffer
  * 
